@@ -1,26 +1,30 @@
+// too granular, switching over to Plot now
+
 import * as d3 from 'd3'
 import { useRef, useEffect } from 'react'
 import wards from '../data/wards.json'
+import precincts from '../data/precincts.json'
 
-interface IPrecinctMapProps {
-  // geoJson: string
-}
+interface IPrecinctMapProps { }
 
-export function PrecinctMapD3({ }: IPrecinctMapProps) {
+export function PrecinctMapD3() {
   const mapRef = useRef<SVGSVGElement>(null)
 
   // this creates path attributes on the single svg
   const renderMap = (path: d3.GeoPath) => {
     d3.select(mapRef.current)
       .selectAll('path')
-      .data(wards.features)
+      // .data(wards.features)
+      .data(precincts.features)
       .enter()
       .append('path')
-      .attr('id', d => `ward-${d.properties['Ward']}`)
+      // .attr('id', d => `ward-${d.properties['Ward']}`)
+      .attr('id', d => `precinct-${d.properties['OBJECTID']}`)
       .attr('d', path as any) // need to fix this type from the projection() result
       .attr('stroke', '#000000')
       .attr('stroke-width', '.5')
-      .attr('fill', 'transparent')
+      .attr('fill', 'rgb(0, 105, 150)')
+
     // .attr('fill', (data) => {
     //   // console.log(data)
     //   const wardRaw = data.properties.Ward
@@ -36,7 +40,8 @@ export function PrecinctMapD3({ }: IPrecinctMapProps) {
       const height = mapRef.current.clientHeight
       const width = mapRef.current.clientWidth
 
-      const projection = d3.geoAlbers().fitSize([height, width], wards as any)
+      // const projection = d3.geoAlbers().fitSize([height, width], wards as any)
+      const projection = d3.geoAlbersUsa().fitSize([height, width], precincts as any)
       const pathGenerator = d3.geoPath().projection(projection)
 
       renderMap(pathGenerator)
@@ -48,8 +53,8 @@ export function PrecinctMapD3({ }: IPrecinctMapProps) {
       <svg
         className='precincts-map'
         ref={mapRef}
-        height={800}
-        width={800}
+        height={1000}
+        width={1000}
       />
     </div>
   )
