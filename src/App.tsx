@@ -1,19 +1,26 @@
 import './App.css';
-import { PrecinctData } from './components/PrecinctData';
-import { PrecinctMapD3 } from './components/PrecinctMapD3';
+import { useState } from 'react';
+// import { PrecinctData } from './components/PrecinctData';
 import { PrecinctMapPlot } from './components/PrecinctMapPlot';
 
 // const getRandomRGBValue = (): number => Math.floor(Math.random() * 256)
-// const getNewColorHandler = (): string =>
+// const getNewRandomRGBColor = (): string =>
 //   `rgb(${getRandomRGBValue()}, ${getRandomRGBValue()}, ${getRandomRGBValue()})`
 
 function App() {
+  const [fillColor, setFillColor] = useState<string>('beige')
+
+  // const getNewFillColorHandler = () => {
+  //   const newColor = getNewRandomRGBColor()
+  //   setFillColor(newColor)
+  // }
+
   return (
     <div className="App">
-      <h1>Boston wards - 2024 Presidential election margins</h1>
-      {/* <PrecinctMapD3 /> */}
-      <PrecinctMapPlot />
-      <PrecinctData />
+      <h1>Boston wards - 2024 Presidential election vote shares</h1>
+      <PrecinctMapPlot fillColor={fillColor} />
+      {/* <PrecinctData />
+      <button onClick={getNewFillColorHandler}>Randomize map fill color</button> */}
     </div>
   );
 }
