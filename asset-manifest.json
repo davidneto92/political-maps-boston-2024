@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/political-maps-boston-2024/static/css/main.aa13fe0b.css",
+    "main.js": "/political-maps-boston-2024/static/js/main.520e13bf.js",
+    "static/js/453.1ab761fc.chunk.js": "/political-maps-boston-2024/static/js/453.1ab761fc.chunk.js",
+    "index.html": "/political-maps-boston-2024/index.html",
+    "main.aa13fe0b.css.map": "/political-maps-boston-2024/static/css/main.aa13fe0b.css.map",
+    "main.520e13bf.js.map": "/political-maps-boston-2024/static/js/main.520e13bf.js.map",
+    "453.1ab761fc.chunk.js.map": "/political-maps-boston-2024/static/js/453.1ab761fc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.aa13fe0b.css",
+    "static/js/main.520e13bf.js"
+  ]
+}
