@@ -21,8 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-.vscode/
-# temporarily removing
-public/*.csv
-src/data/voting_data.json

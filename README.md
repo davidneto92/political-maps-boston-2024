@@ -4,13 +4,13 @@ Simple `react` app to experiment with `D3` and `Plot`. Goal is to generate polit
 
 ## To do
 
-- script to convert csv to JSON for better consumption
-- add precinct layers, currently only showing wards
-  - blocked by Boston.gov tech issues
-  - color precincts based on margin data
-  - add UI to choose data/set to represent
-- color code results to stepped color values
-- Actually learn how to use D3/Plot
+- [x] script to convert csv to JSON for better consumption
+- [x] add precinct layers, currently only showing wards
+- [x] color code results to stepped color values
+- [ ] add buttons to choose data set to represent
+- [ ] display a table below the map of the data
+- [ ] actually learn how to use D3
+- [x] actually learn how to use Plot
 
 ## Notes
 
