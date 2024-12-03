@@ -9,6 +9,7 @@ Simple `react` app to experiment with `D3` and `Plot`. Goal is to generate polit
 - [x] color code results to stepped color values
 - [ ] add buttons to choose data set to represent
 - [ ] display a table below the map of the data
+- [ ] render a map of the Boston area below the graphic
 - [ ] actually learn how to use D3
 - [x] actually learn how to use Plot
 
