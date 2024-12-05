@@ -5,7 +5,7 @@ const padZero = (input) => input < 10 ? `0${input}` : `${input}`
 
 const wardMap = {}
 
-fs.createReadStream("../poli-map-2024/public/boston_2020-2024_comparison.csv")
+fs.createReadStream("./public/boston_2020-2024_comparison.csv")
   .pipe(csvParser({
     mapValues: ({ value }) => {
       const parsed = parseFloat(value.replace(',', ''))

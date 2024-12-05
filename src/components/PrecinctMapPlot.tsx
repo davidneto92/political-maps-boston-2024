@@ -5,16 +5,16 @@ import wards from '../data/wards.json'
 import votingData from '../data/voting_data.json'
 const electionData = new Map(Object.entries(votingData));
 
-const buildPlot = (fillColor: string) => {
+const buildPlot = () => {
   return Plot.plot({
     aspectRatio: 3 / 4,
     width: 1200,
     color: {
       type: "quantize",
-      n: 20,
-      domain: [30, 100],
-      scheme: "Blues",
-      label: "Vote share % - Trump vs Harris",
+      domain: [-100, 100],
+      n: 10,
+      scheme: "RdBu",
+      label: "Vote margin % - Trump vs Harris",
       legend: true
     },
     axis: null,
@@ -31,16 +31,12 @@ const buildPlot = (fillColor: string) => {
           if (!info) {
             return 'white'
           }
-          const { 'Harris 24 %': harris24, 'Trump 24 %': trump24 } = info
-          if (typeof harris24 === 'number' && typeof trump24 === 'number') {
-            return Math.max(harris24, trump24)
-          }
-          console.log(info)
-          return 0
+          const { 'Harris 24 Margin': marginValue } = info
+          return marginValue
         },
         tip: true,
         channels: {
-          Name: ({ properties }) => {
+          Neighborhood: ({ properties }) => {
             const districtKey: string | undefined = properties?.DISTRICT
             if (!districtKey) {
               return 'n/a'
@@ -60,8 +56,7 @@ const buildPlot = (fillColor: string) => {
               return 'n/a'
             }
             const info = electionData.get(districtKey)
-            const total = info?.['24 Total Voters']
-            return !total || total < 10 ? 'n/a' : info?.['24 Total Voters']
+            return info?.['24 Total Voters'] || 0
           }
         }
       }),
@@ -70,20 +65,16 @@ const buildPlot = (fillColor: string) => {
   })
 }
 
-interface IPrecinctMapPlotProps {
-  fillColor: string
-}
-
-export function PrecinctMapPlot({ fillColor = 'red' }: IPrecinctMapPlotProps) {
+export function PrecinctMapPlot() {
   const mapRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const geoPlot = buildPlot(fillColor)
+    const geoPlot = buildPlot()
     if (mapRef.current) {
       mapRef.current.append(geoPlot)
     }
     return () => geoPlot.remove();
-  }, [fillColor])
+  }, [])
 
   return (
     <div className='wrapper'>
