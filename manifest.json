@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Boston 2024 Votes",
+  "name": "2024 Presidential Election Map for Boston, Massachusetts",
   "icons": [
     {
       "src": "favicon.ico",
