@@ -5,6 +5,8 @@ import { TDataSetOptions } from './components/PrecinctMapPlot/getMapOptions';
 
 function App() {
   const [dataSet, setNewDataSet] = useState<TDataSetOptions>('harrisMargin');
+  const hmActiveIndicator = dataSet === 'harrisMargin' ? '🔹' : ''
+  const ggActiveIndicator = dataSet === 'gopGains' ? '🔸' : ''
 
   const harrisMarginDataSetHandler = () => {
     setNewDataSet('harrisMargin')
@@ -18,8 +20,14 @@ function App() {
       <div>
         <h2>Boston 2024 Presidential election vote shares</h2>
         <div className='dataSet-button-wrapper'>
-          <button onClick={harrisMarginDataSetHandler}>Show Harris Margin</button>
-          <button onClick={gopGainsDataSetHandler}>Show GOP Gains</button>
+          <button className='dataSet-button' onClick={harrisMarginDataSetHandler}>
+            <div className='indicator-container'>{hmActiveIndicator}</div>
+            Show Harris Margin
+          </button>
+          <button className='dataSet-button' onClick={gopGainsDataSetHandler}>
+            <div className='indicator-container'>{ggActiveIndicator}</div>
+            Show GOP Gains
+          </button>
         </div>
       </div>
       <PrecinctMapPlot dataSet={dataSet} />
