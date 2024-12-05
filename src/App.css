@@ -19,3 +19,11 @@
   align-items: center;
   justify-content: center;
 }
+
+.dataSet-button-wrapper {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+}
