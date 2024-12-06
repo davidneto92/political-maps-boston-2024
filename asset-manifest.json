@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/political-maps-boston-2024/static/css/main.aa13fe0b.css",
-    "main.js": "/political-maps-boston-2024/static/js/main.a264d628.js",
+    "main.css": "/political-maps-boston-2024/static/css/main.e826688f.css",
+    "main.js": "/political-maps-boston-2024/static/js/main.84be9415.js",
     "static/js/453.1ab761fc.chunk.js": "/political-maps-boston-2024/static/js/453.1ab761fc.chunk.js",
     "index.html": "/political-maps-boston-2024/index.html",
-    "main.aa13fe0b.css.map": "/political-maps-boston-2024/static/css/main.aa13fe0b.css.map",
-    "main.a264d628.js.map": "/political-maps-boston-2024/static/js/main.a264d628.js.map",
+    "main.e826688f.css.map": "/political-maps-boston-2024/static/css/main.e826688f.css.map",
+    "main.84be9415.js.map": "/political-maps-boston-2024/static/js/main.84be9415.js.map",
     "453.1ab761fc.chunk.js.map": "/political-maps-boston-2024/static/js/453.1ab761fc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.aa13fe0b.css",
-    "static/js/main.a264d628.js"
+    "static/css/main.e826688f.css",
+    "static/js/main.84be9415.js"
   ]
 }
