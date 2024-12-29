@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  /* background-color: aqua */
 }
 
 .App-logo {
@@ -13,11 +14,29 @@
   }
 }
 
-.wrapper {
-  padding: 20px;
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 50px
+}
+
+.map-image {
+  position: absolute;
+  z-index: -1;
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  /* width: 200;
+  height: 300; */
+}
+
+.wrapper {
+  /* padding: 20px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* opacity: 0.5; */
 }
 
 .dataSet-button-wrapper {
@@ -39,4 +58,9 @@
 
 .indicator-container {
   min-width: 20px
+}
+
+.image-crap {
+  width: 250px;
+  height: 250px;
 }

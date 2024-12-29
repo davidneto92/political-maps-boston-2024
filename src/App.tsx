@@ -3,6 +3,8 @@ import './App.css';
 import { PrecinctMapPlot } from './components/PrecinctMapPlot/PrecinctMapPlot';
 import { TDataSetOptions } from './components/PrecinctMapPlot/getMapOptions';
 
+const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN
+
 function App() {
   const [dataSet, setNewDataSet] = useState<TDataSetOptions>('harrisMargin');
   const hmActiveIndicator = dataSet === 'harrisMargin' ? '🔹' : ''
@@ -14,6 +16,8 @@ function App() {
   const gopGainsDataSetHandler = () => {
     setNewDataSet('gopGains')
   }
+
+  const mapboxUri = `https://api.mapbox.com/styles/v1/mapbox/light-v11/static/-71.010,42.3282,10.4,0/740x443?access_token=${MAPBOX_TOKEN}`
 
   return (
     <div className='App'>
@@ -30,7 +34,11 @@ function App() {
           </button>
         </div>
       </div>
-      <PrecinctMapPlot dataSet={dataSet} />
+      {/* <img src={process.env.PUBLIC_URL + '/images.jpg'} alt='ya okay' /> */}
+      <div className='container'>
+        {/* <img className='map-image' src={mapboxUri} alt='map goes here' /> */}
+        <PrecinctMapPlot dataSet={dataSet} />
+      </div>
     </div>
   );
 }
