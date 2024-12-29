@@ -24,3 +24,5 @@ yarn-error.log*
 
 # temp Libre file
 public/.~lock*
+
+.env

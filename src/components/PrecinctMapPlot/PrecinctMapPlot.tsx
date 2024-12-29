@@ -1,19 +1,25 @@
 import { useRef, useEffect } from 'react'
-import * as Plot from "@observablehq/plot";
+import * as Plot from '@observablehq/plot'
 import precincts from '../../data/precincts.json'
 import wards from '../../data/wards.json'
-import { getMapDataSetOptions, TDataSetOptions } from './getMapOptions';
+import { getMapDataSetOptions, TDataSetOptions } from './getMapOptions'
 
 const buildPlot = (dataSet: TDataSetOptions) => {
   const {
     color: dataSetColor,
     fill: dataSetFill,
-    channels: dataSetChannels
+    channels: dataSetChannels,
   } = getMapDataSetOptions(dataSet)
 
   return Plot.plot({
-    aspectRatio: 3 / 4,
-    width: 1200,
+    // this aspect ratio is close to the conic projection
+    aspectRatio: 58.5 / 80,
+    // the projection doesn't like rendering the precincts, need to keep digging
+    // projection: {
+    //   type: 'conic-conformal',
+    //   domain: wards as any,
+    //   rotate: [71 + 30 / 60, 0]
+    // },
     color: dataSetColor,
     axis: null,
     marks: [
@@ -33,10 +39,10 @@ const buildPlot = (dataSet: TDataSetOptions) => {
             return properties.DISTRICT.split('-')[1]
           },
           ...dataSetChannels,
-        }
+        },
       }),
       Plot.geo(wards as GeoJSON.FeatureCollection, { stroke: '#0f0f0f' }),
-    ]
+    ],
   })
 }
 
@@ -52,11 +58,11 @@ export function PrecinctMapPlot({ dataSet }: IPrecinctMapPlotProps) {
     if (mapRef.current) {
       mapRef.current.append(geoPlot)
     }
-    return () => geoPlot.remove();
+    return () => geoPlot.remove()
   }, [dataSet])
 
   return (
-    <div className='wrapper'>
+    <div className="wrapper">
       <div ref={mapRef} />
     </div>
   )

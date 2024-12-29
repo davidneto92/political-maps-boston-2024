@@ -11,11 +11,11 @@ interface IMapOptions extends Pick<MarkOptions, 'fill' | 'channels'> {
 
 const MAP_OPTION_HARRIS_MARGIN: IMapOptions = {
   color: {
-    type: "quantize",
+    type: 'quantize',
     domain: [-100, 100],
     n: 10,
-    scheme: "RdBu",
-    label: "Vote margin % - Trump vs Harris",
+    scheme: 'RdBu',
+    label: 'Vote margin % - Trump vs Harris',
     legend: true
   },
   fill: ({ properties }) => {
@@ -38,18 +38,18 @@ const MAP_OPTION_HARRIS_MARGIN: IMapOptions = {
       }
       const info = (votingData as any)[districtKey]
       return info?.['24 Total Voters'] || 0
-    }
-  }
+    },
+  },
 }
 
 const MAP_OPTION_GOP_GAINS: IMapOptions = {
   color: {
-    type: "quantize",
+    type: 'quantize',
     domain: [-30, 0, 30],
     n: 10,
-    scheme: "BuRd",
-    label: "GOP % Gains vs 2020",
-    legend: true
+    scheme: 'BuRd',
+    label: 'GOP % Gains vs 2020',
+    legend: true,
   },
   fill: ({ properties }) => {
     const districtKey: string | undefined = properties?.DISTRICT
@@ -71,8 +71,8 @@ const MAP_OPTION_GOP_GAINS: IMapOptions = {
       }
       const info = (votingData as any)[districtKey]
       return info?.['24 Total Voters'] || 0
-    }
-  }
+    },
+  },
 }
 
 export const getMapDataSetOptions = (dataSet: TDataSetOptions): IMapOptions => {
@@ -85,5 +85,3 @@ export const getMapDataSetOptions = (dataSet: TDataSetOptions): IMapOptions => {
       return MAP_OPTION_HARRIS_MARGIN
   }
 }
-
-
