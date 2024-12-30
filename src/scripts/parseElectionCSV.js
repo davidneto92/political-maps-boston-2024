@@ -1,3 +1,4 @@
+// converts the public election data csv into a json
 import fs from "fs";
 import csvParser from "csv-parser";
 

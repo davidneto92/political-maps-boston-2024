@@ -10,9 +10,12 @@ Simple `react` app to experiment with `D3` and `Plot`. Goal is to generate polit
 - [ ] add filter for margin % - slider?
 - [ ] add buttons to choose data set to represent
 - [ ] display a table below the map of the data
+  - [x] detect mouseover events so we can highlight the moused over row
+  - [ ] autoscroll to the selected row
+  - [ ] add zoom functionality to map view?
 - [ ] render a map of the Boston area below the graphic
-- [ ] actually learn how to use D3
 - [x] actually learn how to use Plot
+- [ ] actually learn how to use D3
 
 ## Notes
 

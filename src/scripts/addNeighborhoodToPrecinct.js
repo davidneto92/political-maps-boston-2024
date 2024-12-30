@@ -1,3 +1,4 @@
+// only needed to be run once
 const fs = require('fs')
 const precincts = require('../data/precincts.json')
 const votingData = require('../data/voting_data.json')

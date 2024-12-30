@@ -13,19 +13,33 @@
   }
 }
 
-.wrapper {
+.map-and-table-container {
+  display: flex;
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+.map-container {
+  flex: 2;
+  background-color: rgb(223, 223, 223);
   padding: 20px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.table-container {
+  flex: 1;
+  background-color: aquamarine;
 }
 
 .dataSet-button-wrapper {
   display: flex;
   gap: 20px;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 20px;
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* padding-bottom: 20px; */
 }
 
 .dataSet-button {

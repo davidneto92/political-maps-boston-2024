@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import { PrecinctMapPlot } from './components/PrecinctMapPlot/PrecinctMapPlot';
 import { TDataSetOptions } from './components/PrecinctMapPlot/getMapOptions';
+import { PrecinctData } from './components/PrecinctData';
 
 function App() {
   const [dataSet, setNewDataSet] = useState<TDataSetOptions>('harrisMargin');
@@ -17,20 +18,25 @@ function App() {
 
   return (
     <div className='App'>
-      <div>
-        <h2>Boston 2024 Presidential election vote shares</h2>
-        <div className='dataSet-button-wrapper'>
-          <button className='dataSet-button' onClick={harrisMarginDataSetHandler}>
-            <div className='indicator-container'>{hmActiveIndicator}</div>
-            Show Harris Margin
-          </button>
-          <button className='dataSet-button' onClick={gopGainsDataSetHandler}>
-            <div className='indicator-container'>{ggActiveIndicator}</div>
-            Show GOP Gains
-          </button>
+      <h2>Boston 2024 Presidential election vote shares</h2>
+      <div className='map-and-table-container'>
+        <div className='map-container'>
+          <div className='dataSet-button-wrapper'>
+            <button className='dataSet-button' onClick={harrisMarginDataSetHandler}>
+              <div className='indicator-container'>{hmActiveIndicator}</div>
+              Show Harris Margin
+            </button>
+            <button className='dataSet-button' onClick={gopGainsDataSetHandler}>
+              <div className='indicator-container'>{ggActiveIndicator}</div>
+              Show GOP Gains
+            </button>
+          </div>
+          <PrecinctMapPlot dataSet={dataSet} />
+        </div>
+        <div className='table-container'>
+          <PrecinctData />
         </div>
       </div>
-      <PrecinctMapPlot dataSet={dataSet} />
     </div>
   );
 }

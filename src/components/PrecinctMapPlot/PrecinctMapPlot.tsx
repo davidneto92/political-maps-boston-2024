@@ -12,8 +12,9 @@ const buildPlot = (dataSet: TDataSetOptions) => {
   } = getMapDataSetOptions(dataSet)
 
   return Plot.plot({
-    // this aspect ratio is close to the conic projection
+    // this aspect ratio is close to the conic projection...but not all projections
     aspectRatio: 58.5 / 80,
+    width: 1000,
     // the projection doesn't like rendering the precincts, need to keep digging
     // projection: {
     //   type: 'conic-conformal',
@@ -46,6 +47,13 @@ const buildPlot = (dataSet: TDataSetOptions) => {
   })
 }
 
+const precinctMouseoverHandler = (targetValue: object) => {
+  if (!targetValue) {
+    return
+  }
+  console.log(targetValue)
+}
+
 interface IPrecinctMapPlotProps {
   dataSet: TDataSetOptions
 }
@@ -56,14 +64,21 @@ export function PrecinctMapPlot({ dataSet }: IPrecinctMapPlotProps) {
   useEffect(() => {
     const geoPlot = buildPlot(dataSet)
     if (mapRef.current) {
+      geoPlot.addEventListener('input', () => {
+        precinctMouseoverHandler(geoPlot.value)
+      })
       mapRef.current.append(geoPlot)
     }
-    return () => geoPlot.remove()
+
+    return () => {
+      geoPlot.removeEventListener('input', () => {
+        precinctMouseoverHandler(geoPlot.value)
+      })
+      geoPlot.remove()
+    }
   }, [dataSet])
 
   return (
-    <div className="wrapper">
-      <div ref={mapRef} />
-    </div>
+    <div ref={mapRef} />
   )
 }
